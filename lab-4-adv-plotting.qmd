@@ -1,0 +1,46 @@
+---
+title: "Lab 4. Advanced Plotting"
+author: "Jared Joseph"
+format:
+    html:
+      self-contained: true
+editor: source
+---
+
+## Introduction
+
+Click here to access the lab on Github Classroom: [Github Classroom Assignment for Lab 4: Advanced Plotting](XXXXX)
+
+
+
+## The Data
+
+The data we will be using today comes from the [U.S. Department of Education College Scorecard](https://collegescorecard.ed.gov/). The college scorecard collects important data about universities across the country such as cost of attendance, acceptance rates, graduation rates, and the income of students from that institution after graduation. It also gives information on the student body, including how graduates from each major do after graduation. If you are curious, [you can see Smith's page here](https://collegescorecard.ed.gov/school/?167835-Smith-College).
+
+The full scorecard data set is huge. It includes information about over 6500 institutions in the U.S., and has more than 3000 columns documenting information about those institutions. Today we will be using the `rscorecard` package to get a subset of the data.
+
+To use the `rscorecard` package, you will need to get an Application Programming Interface (API) key. API keys grant you direct access to data that is often otherwise limited. You get to pull data directly into R without needing to download files from the web, and the provider gets to limit the data you can actually get. This arrangement is usually beneficial for everyone.
+
+To get an API key for the college scorecard data, [you will need to request one on the data.gov web portal](https://api.data.gov/signup/). Once you fill out your information, you should get an email almost immediately with a personalized API key. This key is unique to you, so it is important to keep it safe. *You should never include your API keys in a file, especially those you commit with git. Other people can look through your git history and find your personal key to use for nefarious purposes!*
+
+Once you have your key, run the following command in your console, replacing "SCORECARD_KEY" with your unique key:
+
+```
+library(rscorecard)
+
+sc_key(<SCORECARD_KEY>)
+```
+
+This will save your key to your R install. **For here on, you can run `sc_get()` to load your API key from memory** (until you re-install R). You will need to run that command whenever you want to get scorecard data.
+
+
+
+
+
+https://www.btskinner.io/rscorecard/
+
+
+You will also need to download the scorecard documentation for this lab. You can find both the Data Dictionary and the Technical Documentation [on the scorecard website](https://collegescorecard.ed.gov/data/documentation/).
+
+
+
