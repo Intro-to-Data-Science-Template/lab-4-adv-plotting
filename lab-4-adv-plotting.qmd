@@ -31,16 +31,91 @@ library(rscorecard)
 sc_key(<SCORECARD_KEY>)
 ```
 
-This will save your key to your R install. **For here on, you can run `sc_get()` to load your API key from memory** (until you re-install R). You will need to run that command whenever you want to get scorecard data.
+This will save your key to your R install. **For here on, you can run `sc_get()` to load your API key from memory** (until you re-install R). You will need to run that command as a part of the code whenever you want to get scorecard data. Run the following code to get our data for today:
+
+```{r}
+# set what variables we want
+
+# school context
+scorecard_variables_context = c("unitid", "instnm", "city", "highdeg", "control", "hbcu", "annhi", "tribal", "aanapii", "hsi", "nanti")
+
+# student info
+scorecard_variables_students = c("unitid", "instnm", "ugds", "adm_rate", "costt4_a", "costt4_p", "pcip27", "pctfloan", "pctpell",  "admcon7", "cdr3")
+
+# Get context data
+scorecard_2020_context <- sc_init() |>       # Set up our API 'call'
+  sc_year(2020) |>                           # Set the year to only 2020
+  sc_filter(stabbr == "MA") |>               # Ask for only MA data
+  sc_select_(scorecard_variables_context) |> # Set variables
+  sc_get()                                   # Get the thing!
+
+scorecard_2017_context <- sc_init() |>
+  sc_year(2017) |>            
+  sc_filter(stabbr == "MA") |>
+  sc_select_(scorecard_variables_context) |>
+  sc_get()
+
+scorecard_2014_context <- sc_init() |>
+  sc_year(2014) |>            
+  sc_filter(stabbr == "MA") |>
+  sc_select_(scorecard_variables_context) |>
+  sc_get()
+
+# Get student data
+scorecard_2020_student <- sc_init() |>      
+  sc_year(2020) |>                   
+  sc_filter(stabbr == "MA") |>       
+  sc_select_(scorecard_variables_students) |>
+  sc_get()                           
+
+scorecard_2017_student <- sc_init() |>
+  sc_year(2017) |>            
+  sc_filter(stabbr == "MA") |>
+  sc_select_(scorecard_variables_students) |>
+  sc_get()
+
+scorecard_2014_student <- sc_init() |>
+  sc_year(2014) |>            
+  sc_filter(stabbr == "MA") |>
+  sc_select_(scorecard_variables_students) |>
+  sc_get()
+```
+
+We now have six dataframes containing data for MA universities and colleges. You will also need to download the scorecard documentation for this lab to understand the variables. You can find both the Data Dictionary and the Technical Documentation [on the scorecard website](https://collegescorecard.ed.gov/data/documentation/). I would save both in the `docs/` directory within your project folder.
+
+Once you have downloaded the documentation, take some time to read up about each of the variables we will be using. The search function is helpful here.
+
+:::{.callout-note}
+### Question 1
+
+Combine all of the scorecard dataframes into one called `scorecard_all`. Optionally, remove the now redundant dataframes from your environment.
+:::
+
+```{r}
+
+#<REPLACE THIS COMMENT WITH YOR ANSWER>
+# Data Aggregation & Subsetting @	Meets Standard
+
+library(dplyr)
+
+# rbind the years into one DF
+scorecard_context_all = rbind(scorecard_2020_context, scorecard_2017_context, scorecard_2014_context)
+scorecard_student_all = rbind(scorecard_2020_student, scorecard_2017_student, scorecard_2014_student)
+
+# join the diff variables into one df
+# shouldn't matter what join type they use
+scorecard_all = full_join(scorecard_context_all, scorecard_student_all, by = c("unitid", "instnm", "year"))
+
+# tidy up
+rm(scorecard_2020_context, scorecard_2017_context, scorecard_2014_context,
+   scorecard_2020_student, scorecard_2017_student, scorecard_2014_student,
+   scorecard_context_all, scorecard_student_all)
+```
 
 
 
 
 
-https://www.btskinner.io/rscorecard/
-
-
-You will also need to download the scorecard documentation for this lab. You can find both the Data Dictionary and the Technical Documentation [on the scorecard website](https://collegescorecard.ed.gov/data/documentation/).
 
 
 
