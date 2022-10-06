@@ -15,9 +15,17 @@ library(rscorecard)
 
 ## Introduction
 
-Click here to access the lab on Github Classroom: [Github Classroom Assignment for Lab 4: Advanced Plotting](XXXXX)
+Click here to access the lab on Github Classroom: [Github Classroom Assignment for Lab 4: Advanced Plotting](https://moodle.smith.edu/mod/url/view.php?id=953783)
 
+Visualizations help us understand our own data, and communicate our data to other people. Today we will be focussing on making visuals that we would want to share with others. While there are some good rules of thumb, visualizations are an art as well as a science. Take some time in making visualizations you think look good, as long as they are still faithful to the underlying data.
 
+Some things to keep in mind:
+
+* What is the story of your visualization?
+* Does your visualization leave any question marks for the viewer?
+* Is there anything you can remove from your visualization and still keep your message clear?
+* Did you include the data source?
+* Have you tried to make your visualization accessable?
 
 ## The Data
 
@@ -29,11 +37,13 @@ To use the `rscorecard` package, you will need to get an Application Programming
 
 To get an API key for the college scorecard data, [you will need to request one on the data.gov web portal](https://api.data.gov/signup/). Once you fill out your information, you should get an email almost immediately with a personalized API key. This key is unique to you, so it is important to keep it safe. *You should never include your API keys in a file, especially those you commit with git. Other people can look through your git history and find your personal key to use for nefarious purposes!*
 
-Once you have your key, run the following command in your console, replacing "SCORECARD_KEY" with your unique key:
+Once you have your key, run the following command in your console, replacing \<SCORECARD_KEY\> with your unique key:
 
 ```{r, eval=FALSE}
+# Load our API library
 library(rscorecard)
 
+# Set our API key
 sc_key(<SCORECARD_KEY>)
 ```
 
@@ -197,7 +207,7 @@ Do any other variables require re-coding? If so, do that now.
 :::
 
 :::{.callout-tip}
-Depending on the tool you use to re-code, you may get an error saying "✖ Can't convert <character> to <integer>." This is the tidyverse trying to protect you, but being overzealous. You can sidestep this by converting the entire column into a character first, or using `as.data.frame()` to turn the tibble (a tidyverse dataframe) back into a normal R dataframe.
+Depending on the tool you use to re-code, you may get an error saying "✖ Can't convert \<character\> to \<integer\>." This is the tidyverse trying to protect you, but being overzealous. You can sidestep this by converting the entire column into a character first, or using `as.data.frame()` to turn the tibble (a tidyverse dataframe) back into a normal R dataframe.
 :::
 
 ```{r}
@@ -276,7 +286,7 @@ What patterns can we see in this plot? If you had to explain the story here to s
 
 No standard, but can contribute to all vis standards if they explain something well
 
-If they get the facet by year, they will see the price increase over time. Otherwise they should talk about the separation of the class of unis, and how that relates to their cost/admission rate. Public are way less expensive and largely less selective, a few unis are hyper selective and expensive, etc.  
+If they get the facet by year, they will see the price increase over time. Otherwise they should talk about the separation of the class of unis, and how that relates to their cost/admission rate. Public are way less expensive and largely less selective, a few unis are hyper selective and expensive, for profit is very not selective (wild surprise), etc.  
 :::
 
 :::{.callout-note}
@@ -293,7 +303,7 @@ Create a plot which shows the relationship between the highest degree awarded by
 # Visualization Context @ Meets Standard, Do they add labels to axes, title, etc.
 # Visualization Aesthetics @ ???, will need to refer to standards and look at plot, chance to score high if they use any tools to highlight the outliers.
 
-# They need to subset to just 2020 data somehow
+# They need to subset to just 2017 data somehow
 
 scorecard_all %>%
  filter(year == 2017) %>%
