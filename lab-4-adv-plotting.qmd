@@ -39,7 +39,7 @@ The full scorecard data set is huge. It includes information about over 6500 ins
 
 To use the `rscorecard` package, you will need to get an Application Programming Interface (API) key. API keys grant you direct access to data that is often otherwise limited. You get to pull data directly into R without needing to download files from the web, and the provider gets to limit the data you can actually get. This arrangement is usually beneficial for everyone.
 
-To get an API key for the college scorecard data, [you will need to request one on the data.gov web portal](https://api.data.gov/signup/). Once you fill out your information, you should get an email almost immediately with a personalized API key. This key is unique to you, so it is important to keep it safe. *You should never include your API keys in a file, especially those you commit with git. Other people can look through your git history and find your personal key to use for nefarious purposes!*
+To get an API key for the college scorecard data, [you will need to request one on the data.gov web portal](https://api.data.gov/signup/). Once you fill out your information, you should get an email almost immediately with a personalized API key. This key is unique to you, so it is important to keep it safe. *You should never include your API keys in a code file, especially those you commit with git. Other people can look through your git history and find your personal key to use for nefarious purposes!*
 
 Once you have your key, run the following command in your console, replacing \<SCORECARD_KEY\> with your unique key:
 
@@ -51,7 +51,7 @@ library(rscorecard)
 sc_key(<SCORECARD_KEY>)
 ```
 
-This will save your key to your R install. **For here on, you can run `sc_get()` to load your API key from memory** (until you re-install R). You will need to run that command as a part of the code whenever you want to get scorecard data. Run the following code to get our data for today:
+This will save your key to your R install. **For here on, you can run `sc_get()` to load your API key from memory**. You will need to re-run `sc_key()` whenever you restart R, so it may be helpful to save your key somewhere safe. Run the following code to get our data for today:
 
 ```{r message=FALSE}
 # set what variables we want
@@ -215,8 +215,6 @@ Using any and all of the tools at your disposal (within R), create a "publicatio
 
 #<REPLACE THIS COMMENT WITH YOR ANSWER>
 
-# All Data Vis Standards, potentially more depending on the extent to which data is transformed prior to vis.
-# Here is a chance for those at any skill level to try and raise their rating, and for those that "get it" to flex a bit.
 ```
 
 
