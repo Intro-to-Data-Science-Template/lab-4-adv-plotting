@@ -51,7 +51,7 @@ library(rscorecard)
 sc_key(<SCORECARD_KEY>)
 ```
 
-This will save your key to your R install. **For here on, you can run `sc_get()` to load your API key from memory**. You will need to re-run `sc_key()` whenever you restart R, so it may be helpful to save your key somewhere safe. Run the following code to get our data for today:
+This will save your key to your R environment. You will need to re-run `sc_key()` whenever you restart R, so it may be helpful to save your key somewhere safe. Run the following code to get our data for today:
 
 ```{r message=FALSE}
 # set what variables we want
@@ -111,7 +111,7 @@ Once you have downloaded the documentation, take some time to read up about each
 :::{.callout-note}
 ### Question 1
 
-Read through the data documentation and write short description of what each of the variables in our dataframes mean. Do you see any issues with the variables as they are defined?
+Read through the data documentation and write a short description of what each of the variables in our dataframes mean. Do you see any issues with the variables as they are defined?
 
 *REPLACE THIS TEXT WITH YOUR ANSWER*
 
